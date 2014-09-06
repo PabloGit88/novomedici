@@ -3,7 +3,13 @@ $(function() {
     // Use Modernizr to detect for touch devices, 
     // which don't support autoplay and may have less bandwidth, 
     // so just give them the poster images instead
-    var BV,
+    $('.skip  a').click( function()
+		{ 
+			showLogin();
+		}
+	);
+	
+	var BV,
         videoPlayer,
         isTouch = Modernizr.touch,
         $window = $(window);
@@ -13,6 +19,13 @@ $(function() {
         BV = new $.BigVideo({forceAutoplay:isTouch});
         BV.init();
         showVideo();
+		BV.getPlayer().one('ended', showLogin);
+				
+		BV.getPlayer().on('play', function() {
+						$('.skip').show();
+						$('.loading').hide();
+					}
+		);
     }
     
     function showVideo() 
@@ -25,5 +38,9 @@ $(function() {
         ],
         { ambient:true });
     }
+
+	function showLogin(){
+			$('.contentForm').show();
+	}
 
 });

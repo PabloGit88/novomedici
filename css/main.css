@@ -28,7 +28,7 @@ body {
 	width: 20%;
 	left: 42%;
 	top: 34%;
-	display:block;
+	display:none;
 }
 
 .contentForm .name, .contentForm .password, .contentForm .input, .contentForm .label{
@@ -106,6 +106,20 @@ body {
 	height: 1243px;
 	background: url(../images/logged.jpg) no-repeat center center;
 	background-size: cover;
+}
+
+.skip{
+	display:none;
+	position: fixed;
+	left: 5%;
+	bottom: 20%;
+}
+
+.loading{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 
