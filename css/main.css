@@ -116,11 +116,14 @@ body {
 }
 
 .loading{
+
 	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: 21%;
+	left: 31%;
 }
+}
+
+
 
 
 /* mediaquery */
@@ -129,6 +132,6 @@ body {
 		position: absolute;
 		width: 26%;
 		left: 35%;
-		display: block;
+		display: none;
 	}
 }
