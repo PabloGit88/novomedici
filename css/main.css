@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'polentical_neonregular';
+    src: url('../fonts/polentical-neon.regular-webfont.eot');
+    src: url('../fonts/polentical-neon.regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/polentical-neon.regular-webfont.woff') format('woff'),
+         url('../fonts/polentical-neon.regular-webfont.ttf') format('truetype'),
+         url('../fonts/polentical-neon.regular-webfont.svg#polentical_neonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
