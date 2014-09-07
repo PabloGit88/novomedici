@@ -3,7 +3,9 @@ $(function() {
     // Use Modernizr to detect for touch devices, 
     // which don't support autoplay and may have less bandwidth, 
     // so just give them the poster images instead
-    $('.skip  a').click( function()
+	$('.vjs-error').hide();
+
+   $('.skip  a').click( function()
 		{ 
 			showLogin();
 		}
@@ -23,7 +25,6 @@ $(function() {
 				
 		BV.getPlayer().on('play', function() {
 						$('.skip').show();
-						$('.loading').hide();
 					}
 		);
     }
@@ -41,6 +42,7 @@ $(function() {
 
 	function showLogin(){
 			$('.contentForm').show();
+			BV.show('images/background.jpg');
 	}
 
 });
