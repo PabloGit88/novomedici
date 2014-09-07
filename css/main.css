@@ -38,7 +38,7 @@ body {
 .contentForm{
 	position: absolute;
 	width: 20%;
-	left: 42%;
+	left: 40%;
 	top: 34%;
 	display:none;
 }
@@ -130,17 +130,68 @@ body {
 .vjs-error-display, .vjs-control-bar {
 	display:none;
 }
-´
 
 
 
 /* mediaquery */
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1510px){
 	.contentForm {
-		position: absolute;
 		width: 26%;
 		left: 35%;
-		display: none;
 	}
 }
 
+@media screen and (max-width: 1200px){
+	.contentForm {
+		width: 30%;
+		left: 34%;
+	}
+}
+
+@media screen and (max-width: 1024px){
+	.contentForm {
+		width: 33%;
+		left: 33%;
+	}
+}
+
+@media screen and (max-width: 800px){
+	.contentForm {
+		width: 35%;
+		left: 33%;
+	}
+
+	.contentForm .name label{
+		font-size: 14px;
+	}
+	.contentForm .password .label label{
+		font-size: 14px;
+	}
+	.contentForm .password .forgot p{
+		font-size: 11px;
+	}
+}
+@media screen and (max-width: 585px){
+	.contentForm {
+		width: 46%;
+		left: 24%;
+	}
+}
+@media screen and (max-width: 360px){
+	.contentForm {
+		width: 60%;
+		left: 18%;
+	}
+	.contentForm .h3{
+		font-size: 30px;
+	}
+	.contentForm .name label{
+		font-size: 19px;
+	}
+}
+
+@media screen and (max-width: 320px){
+	.contentForm {
+		width: 63%;
+	}
+}
