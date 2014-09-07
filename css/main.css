@@ -115,14 +115,10 @@ body {
 	bottom: 20%;
 }
 
-.loading{
-
-	position: fixed;
-	top: 21%;
-	left: 31%;
+.vjs-error-display, .vjs-control-bar {
+	display:none;
 }
-}
-
+´
 
 
 
@@ -135,3 +131,4 @@ body {
 		display: none;
 	}
 }
+
