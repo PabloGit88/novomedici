@@ -32,12 +32,16 @@ $(function() {
     function showVideo() 
     {
     	var videoBaseSrc = $('.videoBackground').data('videoBaseSrc');
-        BV.show([
-                 { type: "video/mp4",  src: videoBaseSrc + ".mp4" },
-                 { type: "video/webm", src: videoBaseSrc + ".webm" },
-                 { type: "video/ogg",  src: videoBaseSrc + ".ogv" }
-        ],
-        { ambient:true });
+		var types = [ ];
+		
+		if ( BrowserDetect.browser == 'Firefox' )
+			types = [ { type: "video/webm", src: videoBaseSrc + ".webm" } ];
+		else if (BrowserDetect.browser == 'Other' )
+			types = [ { type: "video/mp4",  src: videoBaseSrc + ".mp4" } ];
+			else 
+				types = [ { type: "video/mp4",  src: videoBaseSrc + ".mp4" },{ type: "video/webm", src: videoBaseSrc + ".webm" },{ type: "video/ogg",  src: videoBaseSrc + ".ogv" } ];
+		
+		BV.show(types,{ ambient:true });
     }
 
 	function showLogin(){
