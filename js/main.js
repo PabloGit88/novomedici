@@ -24,7 +24,7 @@ $(function() {
 		BV.getPlayer().one('ended', showLogin);
 				
 		BV.getPlayer().on('play', function() {
-						$('.skip').show();
+						
 					}
 		);
     }
@@ -46,7 +46,9 @@ $(function() {
 
 	function showLogin(){
 			$('.contentForm').show();
+			BV.getPlayer().pause();
 			BV.show('images/background.jpg');
+			$('.skip').hide();
 	}
 
 });
