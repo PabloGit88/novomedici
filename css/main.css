@@ -14,7 +14,6 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: 'polentical neon';
 }
 
 html,
@@ -26,6 +25,7 @@ body {
     overflow: hidden;
     font-weight: 300;
     font-size: 1em;
+    font-family: Arial, sans serif;
 }
 
 .wrapper {
@@ -33,23 +33,46 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
+	display: none;
+    background: url(../images/background.png) no-repeat;
+    background-size: cover;
 }
 
-.contentForm{
+.header {
+	height: 16%;
+	background: url(../images/logo.png) no-repeat #5b2513;	
+	background-size: contain;
+	background-position: 12% center;
+	border: 7px solid #5b2513;
+}
+
+.contentForm {
 	position: absolute;
 	width: 20%;
 	left: 40%;
 	top: 34%;
-	display:none;
 }
 
-.contentForm .name, .contentForm .password, .contentForm .input, .contentForm .label{
-	float:left;
-	width:100%;
+.contentForm h3{
+	margin: 0;
+	font-family: 'polentical_neonregular';
+	font-size: 34px;
+	font-weight: normal;
+}
+
+.contentForm .name, .contentForm .password, .contentForm .input, .contentForm .label {
+	float: left;
+	width: 100%;
+}
+
+.contentForm .label label {
+	font-family: 'polentical_neonregular';
+	color: #FFFFFF;
+	font-size: 22px;
 }
 
 .contentForm input{
-	height: 44px;
+	height: 53px;
 	border: 1px solid #eeeded;
 	border-radius: 10px;
 	font-size: 24px;
@@ -57,45 +80,39 @@ body {
 	margin: 0;
 	width: 100%;
 }
-.contentForm h3{
-	margin: 0;
-	font-size:34px;
-}
-.contentForm .name, .contentForm .password{
-	font-size:22px;
-	margin-top:5px;
+
+.contentForm .name, .contentForm .password {
+	font-size: 22px;
+	margin-top: 5px;
 }
 
-.contentForm .password .label{
-	width:30%;
+.contentForm .password .label {
+	width: 30%;
 }
 
-.contentForm .forgot{
+.contentForm .forgot {
 	width: 70%;
 	padding-top: 8px;
 	float: right;
 }
 
-.contentForm .forgot p{
+.contentForm .forgot p {
 	margin:0;
-	font-size:16px;
+	font-size: 14px;
 	float: right;
-}
-.contentForm .forgot p{
+	color: #FFFFFF;
 	text-decoration:none;
-	color:#FFFFFF;
 }
-.contentForm .enterContent{
+.contentForm .enterContent {
 	width: 100%;
 	float: left;
 	margin-top: 20px;
 }
 
-.contentForm .enterContent .button{
-	width: 100%;
+.contentForm .enterContent .button {
 	float: right;
 }
-.contentForm .button a{
+.contentForm .button a {
 	float:right;
 /*	border-radius: 10px;
 	font-size: 16px;
@@ -108,12 +125,11 @@ body {
 }
 
 .img-responsive {
-	 border:none;
+	border:none;
 	max-width: 100%;	
-
 }
 
-.logged{
+.logged {
 	margin: 0;
 	height: 100%;
 	height: 1243px;
@@ -121,11 +137,16 @@ body {
 	background-size: cover;
 }
 
-.skip{
-	
+.skip {
 	position: fixed;
 	left: 5%;
-	bottom: 20%;
+	bottom: 6%;
+}
+
+.skip a {
+	text-transform: uppercase;
+	color: #856654;
+	text-decoration: none;
 }
 
 .vjs-error-display, .vjs-control-bar {

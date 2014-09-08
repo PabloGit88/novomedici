@@ -5,29 +5,24 @@ $(function() {
     // so just give them the poster images instead
 	$('.vjs-error').hide();
 
-   $('.skip  a').click( function()
-		{ 
-			showLogin();
-		}
-	);
+	$('.skip  a').click(function(e)
+	{ 
+		e.preventDefault();
+		showLogin();
+	});
 	
 	var BV,
         videoPlayer,
         isTouch = Modernizr.touch,
         $window = $(window);
     
-    if (!isTouch) {
-        // initialize BigVideo
-        BV = new $.BigVideo({forceAutoplay:isTouch});
-        BV.init();
-        showVideo();
-		BV.getPlayer().one('ended', showLogin);
+    BV = new $.BigVideo({forceAutoplay:isTouch});
+    BV.init();
+    showVideo();
+	BV.getPlayer().one('ended', showLogin);
 				
-		BV.getPlayer().on('play', function() {
-						
-					}
-		);
-    }
+	BV.getPlayer().on('play', function() {
+	});
     
     function showVideo() 
     {
@@ -45,10 +40,11 @@ $(function() {
     }
 
 	function showLogin(){
-			$('.contentForm').show();
-			BV.getPlayer().pause();
-			BV.show('images/background.jpg');
-			$('.skip').hide();
+		BV.getPlayer().pause();
+		BV.getPlayer().hide();
+		$('.skip').hide();
+		
+		$('.wrapper').show();
 	}
 
 });

@@ -15,8 +15,11 @@
     <script src="js/vendor/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
+    <div class="videoBackground" data-video-base-src="vid/video">
+    </div>
     <div class="wrapper">
-        <div class="videoBackground" data-video-base-src="vid/video">
+        
+        <div class="header">
         </div>
         
         <div class="contentForm">
@@ -34,16 +37,15 @@
 	   	     		</div>	   	     		
         		</div>
 				<div class="enterContent">
-					<div class="button"><a href="logged.html"><img src="images/enterButton.png" class="img-responsive"></a></div>
-				</fdiv>
+					<a href="logged.html" class="button"><img src="images/enterButton.png" class="img-responsive"></a>
+				</div>
         	</form>
         </div>
     </div>
 	<div class="skip">
-			<a href="#" ><img src="images/skip-intro.png" class="img-responsive"></a>
+		<a href="#">Skip Intro</a>
 	</div>
 
-    <!-- BigVideo Dependencies -->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
     <script src="js/vendor/jquery-ui-1.8.22.custom.min.js"></script>
     <script src="js/vendor/video.js"></script>
