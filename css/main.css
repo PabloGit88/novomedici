@@ -108,6 +108,7 @@ body {
 }
 
 .img-responsive {
+	 border:none;
 	max-width: 100%;	
 
 }
