@@ -18,17 +18,28 @@ $(function() {
     
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
+    
+    BV.getPlayer().on('loadstart', function() {
+		$('.progressBar').show();
+		console.log('loadstart');
+	});
+     
   
 	BV.getPlayer().on('progress', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
-		$('.progressBar').show();
-		$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
+		if (howMuchIsDownloaded > 0.49 ){
+			BV.getPlayer().play();
+		}
+		else{
+			$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
+		}
 	});
     
 	BV.getPlayer().one('ended', showLogin);
 				
 	BV.getPlayer().on('play', function() {
-		 //$('#progressBar').hide();
+		console.log('play');
+		$('.progressBar').hide();
 	});
     
 	BV.getPlayer().on('waiting', function() {
@@ -56,7 +67,7 @@ $(function() {
 		BV.getPlayer().pause();
 		BV.getPlayer().hide();
 		$('.skip').hide();
-		
+		$('#progressBar').hide();
 		$('.wrapper').show();
 		$('.wrapper').animate({ left: '0px'}, 300);
 	}

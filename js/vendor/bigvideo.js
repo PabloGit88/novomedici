@@ -274,7 +274,7 @@
 				}
 				player = videojs(vidEl.substr(1), {
 					controls:false,
-					autoplay:true,
+					autoplay:false,
 					preload:'auto',
 					techOrder:videoTechOrder
 				});
