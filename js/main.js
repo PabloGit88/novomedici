@@ -19,18 +19,19 @@ $(function() {
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
   
-	BV.getPlayer().on('progress ', function() {
+	BV.getPlayer().on('progress', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
 		 $('#progressBar').val(howMuchIsDownloaded);
+		 console.log(howMuchIsDownloaded);
 	});
     
 	BV.getPlayer().one('ended', showLogin);
 				
 	BV.getPlayer().on('play', function() {
-		 $('#progressBar').hide();
+		 //$('#progressBar').hide();
 	});
     
-	BV.getPlayer().on('waiting ', function() {
+	BV.getPlayer().on('waiting', function() {
 		 $('#progressBar').val(0);
 	});
 	
