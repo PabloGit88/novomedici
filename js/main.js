@@ -24,14 +24,20 @@ $(function() {
 		console.log('loadstart');
 	});
      
-  
+    var skipped= false;
+    var playing = false;
 	BV.getPlayer().on('progress', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
 		if (howMuchIsDownloaded > 0.49 ){
-			BV.getPlayer().play();
+			if (!playing)
+				BV.getPlayer().play();
+			playing = true;
 		}
 		else{
-			$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
+			if (!skipped){
+				$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
+			
+			}
 		}
 	});
     
@@ -42,9 +48,7 @@ $(function() {
 		$('.progressBar').hide();
 	});
     
-	BV.getPlayer().on('waiting', function() {
-		$('.progressBar').show();
-	});
+
 	
 	showVideo();
 	
@@ -65,9 +69,11 @@ $(function() {
 
 	function showLogin(){
 		BV.getPlayer().pause();
+		skipped = true;
+		BV.getPlayer().muted(true);
+		$('.progressBar').hide();
 		BV.getPlayer().hide();
 		$('.skip').hide();
-		$('#progressBar').hide();
 		$('.wrapper').show();
 		$('.wrapper').animate({ left: '0px'}, 300);
 	}
