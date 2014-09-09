@@ -21,8 +21,8 @@ $(function() {
   
 	BV.getPlayer().on('progress', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
-		 $('#progressBar').val(howMuchIsDownloaded);
-		 console.log(howMuchIsDownloaded);
+		$('.progressBar').show();
+		$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
 	});
     
 	BV.getPlayer().one('ended', showLogin);
@@ -32,7 +32,7 @@ $(function() {
 	});
     
 	BV.getPlayer().on('waiting', function() {
-		 $('#progressBar').val(0);
+		$('.progressBar').show();
 	});
 	
 	showVideo();
