@@ -45,6 +45,7 @@ $(function() {
 		$('.skip').hide();
 		
 		$('.wrapper').show();
+		$('.wrapper').animate({ left: '0px'}, 300);
 	}
 
 });
