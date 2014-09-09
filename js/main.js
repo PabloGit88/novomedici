@@ -22,7 +22,6 @@ $(function() {
 	BV.getPlayer().on('progress ', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
 		 $('#progressBar').val(howMuchIsDownloaded);
-		 console.log(howMuchIsDownloaded);
 	});
     
 	BV.getPlayer().one('ended', showLogin);
@@ -35,7 +34,8 @@ $(function() {
 		 $('#progressBar').val(0);
 	});
 	
-	 showVideo();
+	showVideo();
+	
     function showVideo() 
     {
     	var videoBaseSrc = $('.videoBackground').data('videoBaseSrc');
@@ -45,10 +45,10 @@ $(function() {
 			types = [ { type: "video/webm", src: videoBaseSrc + ".webm" } ];
 		else if (BrowserDetect.browser == 'Other' )
 			types = [ { type: "video/mp4",  src: videoBaseSrc + "_1080.mp4" } ];
-			else 
-				types = [ { type: "video/mp4",  src: videoBaseSrc + "_1080.mp4" },{ type: "video/webm", src: videoBaseSrc + ".webm" },{ type: "video/ogg",  src: videoBaseSrc + ".ogv" } ];
+		else 
+			types = [ { type: "video/mp4",  src: videoBaseSrc + "_1080.mp4" },{ type: "video/webm", src: videoBaseSrc + ".webm" },{ type: "video/ogg",  src: videoBaseSrc + ".ogv" } ];
 		
-		BV.show(types,{ ambient:true });
+		BV.show(types,{ ambient:false });
     }
 
 	function showLogin(){
