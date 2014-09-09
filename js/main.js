@@ -22,7 +22,7 @@ $(function() {
 	BV.getPlayer().on('progress ', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
 		 $('#progressBar').val(howMuchIsDownloaded);
-		 console.log('');
+		 console.log(howMuchIsDownloaded);
 	});
     
 	BV.getPlayer().one('ended', showLogin);
