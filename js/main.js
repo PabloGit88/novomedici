@@ -22,6 +22,7 @@ $(function() {
 	BV.getPlayer().on('progress ', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
 		 $('#progressBar').val(howMuchIsDownloaded);
+		 console.log('');
 	});
     
 	BV.getPlayer().one('ended', showLogin);
@@ -43,9 +44,9 @@ $(function() {
 		if ( BrowserDetect.browser == 'Firefox' )
 			types = [ { type: "video/webm", src: videoBaseSrc + ".webm" } ];
 		else if (BrowserDetect.browser == 'Other' )
-			types = [ { type: "video/mp4",  src: videoBaseSrc + "_720.mp4" } ];
+			types = [ { type: "video/mp4",  src: videoBaseSrc + "_1080.mp4" } ];
 			else 
-				types = [ { type: "video/mp4",  src: videoBaseSrc + "_720.mp4" },{ type: "video/webm", src: videoBaseSrc + ".webm" },{ type: "video/ogg",  src: videoBaseSrc + ".ogv" } ];
+				types = [ { type: "video/mp4",  src: videoBaseSrc + "_1080.mp4" },{ type: "video/webm", src: videoBaseSrc + ".webm" },{ type: "video/ogg",  src: videoBaseSrc + ".ogv" } ];
 		
 		BV.show(types,{ ambient:true });
     }
