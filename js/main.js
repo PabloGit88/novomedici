@@ -18,12 +18,23 @@ $(function() {
     
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
-    showVideo();
+  
+	BV.getPlayer().on('progress ', function() {
+		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
+		 $('#progressBar').val(howMuchIsDownloaded);
+	});
+    
 	BV.getPlayer().one('ended', showLogin);
 				
 	BV.getPlayer().on('play', function() {
+		 $('#progressBar').hide();
 	});
     
+	BV.getPlayer().on('waiting ', function() {
+		 $('#progressBar').val(0);
+	});
+	
+	 showVideo();
     function showVideo() 
     {
     	var videoBaseSrc = $('.videoBackground').data('videoBaseSrc');

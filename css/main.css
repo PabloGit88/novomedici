@@ -154,6 +154,21 @@ body {
 	text-decoration: none;
 }
 
+progress{
+	position: fixed;
+	bottom: 10%;
+}
+
+progress:not([value]) {
+  width: 100%;
+  height: 3px;
+}
+
+progress[value] {
+  width: 100%;
+  height: 3px;
+}
+
 .vjs-error-display, .vjs-control-bar {
 	display:none;
 }
