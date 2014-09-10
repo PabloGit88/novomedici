@@ -7,9 +7,8 @@ $(function() {
 
 	
 	var BV,
-        videoPlayer,
-        isTouch = Modernizr.touch,
-        $window = $(window);
+        isTouch = Modernizr.touch;
+     
     
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
@@ -23,9 +22,11 @@ $(function() {
     var playing = false;
 	BV.getPlayer().on('progress', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
+		console.log('howMuchIsDownloaded' + howMuchIsDownloaded);
+		console.log('playing' + playing);
+		
 		if (howMuchIsDownloaded > 0.49 ){
-			if (!playing)
-				BV.getPlayer().play();
+			if (!playing) BV.getPlayer().play();
 			playing = true;
 		}
 		else{
@@ -81,6 +82,7 @@ $(function() {
 		$('.skip').hide();
 		$('.backgroundImage').show();
 		$('.backgroundImage').animate({ right: '0px'}, 'fast');
+		$('.mute  a').hide();
 		BV.getPlayer().muted(true);
     }
 
@@ -99,6 +101,20 @@ $(function() {
 		e.preventDefault();
 		$('.progressBar').hide();
 		BV.getPlayer().pause();
+		
 	});
 
+	$('.mute  a').click(function(e)
+	{ 
+		console.log( $('.mute  a').html());
+		if ( $('.mute  a').html() == 'Audio Off'){
+			 $('.mute  a').html('Audio On');
+			BV.getPlayer().muted(true);
+		}
+		else{
+			 	$('.mute  a').html('Audio Off');
+				BV.getPlayer().muted(false);
+		}
+	});
+	
 });
