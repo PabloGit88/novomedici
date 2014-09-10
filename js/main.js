@@ -7,9 +7,8 @@ $(function() {
 
 	
 	var BV,
-        videoPlayer,
-        isTouch = Modernizr.touch,
-        $window = $(window);
+        isTouch = Modernizr.touch;
+     
     
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
@@ -81,6 +80,7 @@ $(function() {
 		$('.skip').hide();
 		$('.backgroundImage').show();
 		$('.backgroundImage').animate({ right: '0px'}, 'fast');
+		$('.mute  a').hide();
 		BV.getPlayer().muted(true);
     }
 
@@ -99,6 +99,20 @@ $(function() {
 		e.preventDefault();
 		$('.progressBar').hide();
 		BV.getPlayer().pause();
+		
 	});
 
+	$('.mute  a').click(function(e)
+	{ 
+		console.log( $('.mute  a').html());
+		if ( $('.mute  a').html() == 'Audio Off'){
+			 $('.mute  a').html('Audio On');
+			BV.getPlayer().muted(true);
+		}
+		else{
+			 	$('.mute  a').html('Audio Off');
+				BV.getPlayer().muted(false);
+		}
+	});
+	
 });

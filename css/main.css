@@ -160,6 +160,20 @@ body {
 	left: 5%;
 	bottom: 6%;
 }
+
+.mute {
+	position: fixed;
+	right: 5%;
+	bottom: 6%;
+}
+
+
+.mute a {
+	text-transform: uppercase;
+	color: #856654;
+	text-decoration: none;
+}
+
 .skip a {
 	text-transform: uppercase;
 	color: #856654;
