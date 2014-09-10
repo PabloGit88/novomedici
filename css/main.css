@@ -34,7 +34,6 @@ body {
     height: 100%;
     z-index: 0;
 	display: none;
-    background: url(../images/background.png) no-repeat;
     background-size: cover;
     
     left: 100%;

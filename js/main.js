@@ -41,6 +41,17 @@ $(function() {
 		}
 	});
     
+	var loginShowed = false;
+	BV.getPlayer().on('timeupdate', function() {
+		
+		if (BV.getPlayer().currentTime() > 13 && !loginShowed) {
+			loginShowed = true;
+			showLogin();
+			
+		}
+	});
+	
+
 	BV.getPlayer().one('ended', showLogin);
 				
 	BV.getPlayer().on('play', function() {
@@ -68,11 +79,11 @@ $(function() {
     }
 
 	function showLogin(){
-		BV.getPlayer().pause();
+		//BV.getPlayer().pause();
 		skipped = true;
-		BV.getPlayer().muted(true);
+		//BV.getPlayer().muted(true);
 		$('.progressBar').hide();
-		BV.getPlayer().hide();
+		//BV.getPlayer().hide();
 		$('.skip').hide();
 		$('.wrapper').show();
 		$('.wrapper').animate({ left: '0px'}, 300);
