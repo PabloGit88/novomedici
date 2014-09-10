@@ -76,6 +76,7 @@ body {
 	font-family: 'polentical_neonregular';
 	font-size: 34px;
 	font-weight: normal;
+	letter-spacing: 2px;
 }
 
 .contentForm .name, .contentForm .password, .contentForm .input, .contentForm .label {
@@ -87,6 +88,7 @@ body {
 	font-family: 'polentical_neonregular';
 	color: #FFFFFF;
 	font-size: 22px;
+	letter-spacing: 2px;
 }
 
 .contentForm input{
@@ -101,7 +103,7 @@ body {
 
 .contentForm .name, .contentForm .password {
 	font-size: 22px;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .contentForm .password .label {
@@ -114,7 +116,7 @@ body {
 	float: right;
 }
 
-.contentForm .forgot p {
+.contentForm .forgot a {
 	margin:0;
 	font-size: 14px;
 	float: right;
@@ -130,16 +132,15 @@ body {
 .contentForm .enterContent .button {
 	float: right;
 }
-.contentForm .button a {
+.contentForm .button {
 	float:right;
-/*	border-radius: 10px;
-	font-size: 16px;
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-	background-color: #EEEEEE;
+	background: #eeeded;
 	color: #a23916;
-	padding: 15px 40px;*/
+	text-decoration: none;
+	font-size: 20px;
+	padding: 14px 40px;
+	text-transform: uppercase;
+	border-radius: 7px;
 }
 
 .img-responsive {
@@ -160,6 +161,20 @@ body {
 	left: 5%;
 	bottom: 6%;
 }
+
+.mute {
+	position: fixed;
+	right: 5%;
+	bottom: 6%;
+}
+
+
+.mute a {
+	text-transform: uppercase;
+	color: #856654;
+	text-decoration: none;
+}
+
 .skip a {
 	text-transform: uppercase;
 	color: #856654;
