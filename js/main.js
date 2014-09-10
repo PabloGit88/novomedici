@@ -5,11 +5,6 @@ $(function() {
     // so just give them the poster images instead
 	$('.vjs-error').hide();
 
-	$('.skip  a').click(function(e)
-	{ 
-		e.preventDefault();
-		showLogin();
-	});
 	
 	var BV,
         videoPlayer,
@@ -40,20 +35,24 @@ $(function() {
 			}
 		}
 	});
-    
+	
+    var background = false;
 	var loginShowed = false;
 	BV.getPlayer().on('timeupdate', function() {
 		
-		if (BV.getPlayer().currentTime() > 13 && !loginShowed) {
+		var currentTime = BV.getPlayer().currentTime();
+		if ( currentTime > 14 && !loginShowed) {
 			loginShowed = true;
 			showLogin();
-			
+		}
+		if ( currentTime > 16 && !background) {
+			background = true;
+			showBackground();
 		}
 	});
 	
 
 	BV.getPlayer().one('ended', showLogin);
-				
 	BV.getPlayer().on('play', function() {
 		console.log('play');
 		$('.progressBar').hide();
@@ -62,31 +61,44 @@ $(function() {
 
 	
 	showVideo();
-	
     function showVideo() 
     {
     	var videoBaseSrc = $('.videoBackground').data('videoBaseSrc');
 		var types = [ ];
-		
 		if ( BrowserDetect.browser == 'Firefox' )
 			types = [ { type: "video/webm", src: videoBaseSrc + ".webm" } ];
 		else if (BrowserDetect.browser == 'Other' )
 			types = [ { type: "video/mp4",  src: videoBaseSrc + "_720.mp4" } ];
 		else 
 			types = [ { type: "video/mp4",  src: videoBaseSrc + "_720.mp4" },{ type: "video/webm", src: videoBaseSrc + ".webm" },{ type: "video/ogg",  src: videoBaseSrc + ".ogv" } ];
-		
 		BV.show(types,{ ambient:false });
+    }
+    
+    function showBackground()
+    {
+       	background = true;	
+		$('.progressBar').hide();
+		$('.skip').hide();
+		$('.backgroundImage').show();
+		$('.backgroundImage').animate({ right: '0px'}, 'fast');
+		BV.getPlayer().muted(true);
     }
 
 	function showLogin(){
-		//BV.getPlayer().pause();
 		skipped = true;
-		//BV.getPlayer().muted(true);
 		$('.progressBar').hide();
-		//BV.getPlayer().hide();
-		$('.skip').hide();
 		$('.wrapper').show();
-		$('.wrapper').animate({ left: '0px'}, 300);
+		$('.wrapper').animate({ right: '0px'}, 300);
 	}
+	
+	
+	$('.skip  a').click(function(e)
+	{ 
+		showBackground();
+		showLogin();
+		e.preventDefault();
+		$('.progressBar').hide();
+		BV.getPlayer().pause();
+	});
 
 });
