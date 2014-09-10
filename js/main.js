@@ -22,9 +22,11 @@ $(function() {
     var playing = false;
 	BV.getPlayer().on('progress', function() {
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
+		console.log('howMuchIsDownloaded' + howMuchIsDownloaded);
+		console.log('playing' + playing);
+		
 		if (howMuchIsDownloaded > 0.49 ){
-			if (!playing)
-				BV.getPlayer().play();
+			if (!playing) BV.getPlayer().play();
 			playing = true;
 		}
 		else{
