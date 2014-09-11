@@ -8,11 +8,11 @@ $(function() {
 	var BV,
         isTouch = Modernizr.touch,
         skipped = false,
-        playing = false;     
-    
+        playing = false,     
+		beforeValue  = 0;
+	
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
-    
     
     /** Player events **/
     BV.getPlayer().on('loadstart', function() 
@@ -20,8 +20,11 @@ $(function() {
 		$('.progressBar').show();
 	});
     
+   
 	BV.getPlayer().on('progress', function() 
 	{
+		var timeBuffered = BV.getPlayer().buffered();
+		timeBuffered = typeof timeBuffered !== 'undefined'?timeBuffered.end(0):false;
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
 		
 		//If was downloaded the half of the video
@@ -31,6 +34,7 @@ $(function() {
 		}
 		else
 		{
+			BV.getPlayer().pause();
 			$('.progressBar').show();
 			$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
 		}
@@ -48,6 +52,7 @@ $(function() {
 	BV.getPlayer().on('timeupdate', function() 
 	{
 		var currentTime = BV.getPlayer().currentTime();
+
 		if ( currentTime > 13.10 && !loginShowed) {
 			loginShowed = true;
 			showLogin();
@@ -58,8 +63,11 @@ $(function() {
 		}
 	});
 
+	/** Show the video **/
 	showVideo();
 	
+	
+	/** Functions **/
     function showVideo() 
     {
     	var videoBaseSrc = $('.videoBackground').data('videoBaseSrc');
