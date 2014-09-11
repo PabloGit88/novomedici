@@ -122,7 +122,11 @@ body {
 	font-size: 14px;
 	float: right;
 	color: #FFFFFF;
-	text-decoration:none;
+	 text-decoration: none;
+}
+
+.contentForm .forgot a:hover {
+	 text-decoration: underline;	
 }
 .contentForm .enterContent {
 	width: 100%;
@@ -136,12 +140,17 @@ body {
 .contentForm .button {
 	float:right;
 	background: #eeeded;
-	color: #a23916;
+	color: black;
+	hover: color:#a23916;
 	text-decoration: none;
 	font-size: 20px;
 	padding: 14px 40px;
 	text-transform: uppercase;
 	border-radius: 7px;
+}
+
+.contentForm .button:hover	{
+	color: #a23916;
 }
 
 .img-responsive {
