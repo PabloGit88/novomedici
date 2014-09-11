@@ -23,46 +23,43 @@ $(function() {
 	BV.getPlayer().on('progress', function() 
 	{
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
-		console.log(howMuchIsDownloaded);
+		
 		//If was downloaded the half of the video
-		if (howMuchIsDownloaded > 0.49 || howMuchIsDownloaded > 0){
-			if (!playing) BV.getPlayer().play();
-			playing = true;
+		if (howMuchIsDownloaded > 0.49 || howMuchIsDownloaded == 0)
+		{
+			BV.getPlayer().play();
 		}
-		else{
-			if (!skipped){
-				console.log('aa');
-				$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
-			
-			}
+		else
+		{
+			$('.progressBar').show();
+			$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
 		}
 	});
 	
+	BV.getPlayer().one('ended', showLogin);
+	BV.getPlayer().on('play', function() 
+	{
+		$('.progressBar').hide();
+	});
+	
+	/** Check the time of the movie to detect when the elements appers **/
     var background = false;
 	var loginShowed = false;
-	BV.getPlayer().on('timeupdate', function() {
-		
+	BV.getPlayer().on('timeupdate', function() 
+	{
 		var currentTime = BV.getPlayer().currentTime();
-		if ( currentTime > 14 && !loginShowed) {
+		if ( currentTime > 13.10 && !loginShowed) {
 			loginShowed = true;
 			showLogin();
 		}
-		if ( currentTime > 16 && !background) {
+		if ( currentTime > 14.05 && !background) {
 			background = true;
 			showBackground();
 		}
 	});
-	
 
-	BV.getPlayer().one('ended', showLogin);
-	BV.getPlayer().on('play', function() {
-		console.log('play');
-		$('.progressBar').hide();
-	});
-    
-
-	
 	showVideo();
+	
     function showVideo() 
     {
     	var videoBaseSrc = $('.videoBackground').data('videoBaseSrc');
@@ -76,45 +73,49 @@ $(function() {
 		BV.show(types,{ ambient:false });
     }
     
-    function showBackground()
+    function showBackground(speed)
     {
+    	speed = typeof speed !== 'undefined' ? speed : 1000;
+    	
        	background = true;	
 		$('.progressBar').hide();
 		$('.skip').hide();
 		$('.backgroundImage').show();
-		$('.backgroundImage').animate({ right: '0px'}, 'fast');
-		$('.mute  a').hide();
+		$('.backgroundImage').animate({ right: '0px'}, speed);
+		$('.mute a').hide();
 		BV.getPlayer().muted(true);
     }
 
-	function showLogin(){
+	function showLogin(speed)
+	{
+		speed = typeof speed !== 'undefined' ? speed : 500;
+		
 		skipped = true;
 		$('.progressBar').hide();
 		$('.wrapper').show();
-		$('.wrapper').animate({ right: '0px'}, 300);
+		$('.wrapper').animate({ right: '0px'}, speed);
 	}
 	
-	
-	$('.skip  a').click(function(e)
+	$('.skip a').click(function(e)
 	{ 
-		showBackground();
-		showLogin();
+		showBackground(500);
+		showLogin(500);
 		e.preventDefault();
 		$('.progressBar').hide();
 		BV.getPlayer().pause();
-		
 	});
 
-	$('.mute  a').click(function(e)
+	$('.mute a').click(function(e)
 	{ 
-		console.log( $('.mute  a').html());
-		if ( $('.mute  a').html() == 'Audio Off'){
+		if ($('.mute  a').html() == 'Audio Off')
+		{
 			 $('.mute  a').html('Audio On');
 			BV.getPlayer().muted(true);
 		}
-		else{
-			 	$('.mute  a').html('Audio Off');
-				BV.getPlayer().muted(false);
+		else
+		{
+		 	$('.mute  a').html('Audio Off');
+			BV.getPlayer().muted(false);
 		}
 	});
 	
