@@ -106,18 +106,23 @@ $(function() {
 	
 	$('.skip a').click(function(e)
 	{ 
+		e.preventDefault();
+		
+		BV.getPlayer().pause();
+		
 		showBackground(500);
 		showLogin(500);
-		e.preventDefault();
+		
 		$('.progressBar').hide();
-		BV.getPlayer().pause();
 	});
 
 	$('.mute a').click(function(e)
 	{ 
+		e.preventDefault();
+		
 		if ($('.mute  a').html() == 'Audio Off')
 		{
-			 $('.mute  a').html('Audio On');
+			$('.mute  a').html('Audio On');
 			BV.getPlayer().muted(true);
 		}
 		else
