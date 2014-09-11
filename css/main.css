@@ -188,8 +188,8 @@ body {
 	top: 0;
 	left: 0;
 	width: 0%;
-	height: 2px;
-	background: #29d;
+	height: 5px;
+	background: #856654;
 	z-index: 1031;
 }
 
@@ -261,3 +261,11 @@ body {
 		width: 63%;
 	}
 }
+
+@media screen and (max-width: 460px){
+	.contentForm {
+		width: 80%;
+		left: 10%;
+	}
+}
+
