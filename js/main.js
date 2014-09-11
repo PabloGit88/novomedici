@@ -5,32 +5,33 @@ $(function() {
     // so just give them the poster images instead
 	$('.vjs-error').hide();
 
-	
 	var BV,
-        isTouch = Modernizr.touch;
-     
+        isTouch = Modernizr.touch,
+        skipped = false,
+        playing = false;     
     
     BV = new $.BigVideo({forceAutoplay:isTouch});
     BV.init();
     
-    BV.getPlayer().on('loadstart', function() {
+    
+    /** Player events **/
+    BV.getPlayer().on('loadstart', function() 
+    {
 		$('.progressBar').show();
-		console.log('loadstart');
 	});
-     
-    var skipped= false;
-    var playing = false;
-	BV.getPlayer().on('progress', function() {
+    
+	BV.getPlayer().on('progress', function() 
+	{
 		var howMuchIsDownloaded = BV.getPlayer().bufferedPercent();
-		console.log('howMuchIsDownloaded' + howMuchIsDownloaded);
-		console.log('playing' + playing);
-		
-		if (howMuchIsDownloaded > 0.49 ){
+		console.log(howMuchIsDownloaded);
+		//If was downloaded the half of the video
+		if (howMuchIsDownloaded > 0.49 || howMuchIsDownloaded > 0){
 			if (!playing) BV.getPlayer().play();
 			playing = true;
 		}
 		else{
 			if (!skipped){
+				console.log('aa');
 				$('.progressBar').animate({ width: (howMuchIsDownloaded * 100) + '%'}, 'fast');
 			
 			}
